@@ -53,7 +53,7 @@
     line-height: 1.5;
   }
 
-  .wrap { max-width: 880px; margin: 0 auto; padding: 20px 16px 56px; }
+  .wrap { max-width: 1240px; margin: 0 auto; padding: 20px 16px 56px; }
 
   /* ---- top bar ---- */
   .topbar {
@@ -106,6 +106,7 @@
     display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
   }
   @media (min-width: 520px) { .grade-grid { grid-template-columns: repeat(4, 1fr); } }
+  @media (min-width: 760px) { .grade-grid { grid-template-columns: repeat(6, 1fr); } }
 
   .grade-btn {
     background: var(--card); border: 1px solid var(--line); border-radius: 16px;
@@ -140,6 +141,7 @@
   }
   @media (min-width: 560px) { .book-grid { grid-template-columns: repeat(3, 1fr); } }
   @media (min-width: 820px) { .book-grid { grid-template-columns: repeat(4, 1fr); } }
+  @media (min-width: 1080px) { .book-grid { grid-template-columns: repeat(5, 1fr); } }
 
   .book-card {
     background: var(--card); border: 1px solid var(--line); border-radius: 16px;
