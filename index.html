@@ -75,6 +75,24 @@
   .back-btn:hover { background: var(--paper-alt); }
   .back-btn svg { width: 18px; height: 18px; }
 
+  .controls {
+    position: sticky; top: 0; z-index: 10;
+    background: var(--paper);
+    margin: 0 -16px; padding: 0 16px 14px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .bottom-back {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    width: 100%; margin-top: 22px;
+    background: var(--card); border: 1px solid var(--line); color: var(--ink);
+    font-family: inherit; font-weight: 700; font-size: 16px;
+    padding: 15px 16px; border-radius: 14px; cursor: pointer;
+    box-shadow: var(--shadow);
+  }
+  .bottom-back:hover { background: var(--paper-alt); }
+  .bottom-back svg { width: 19px; height: 19px; }
+
   /* ---- home: grade grid ---- */
   .home-card {
     background: var(--card); border: 1px solid var(--line); border-radius: 20px;
@@ -191,28 +209,35 @@
   </div>
 
   <div id="gradeScreen" hidden>
-    <div class="topbar">
-      <button class="back-btn" id="backBtn" type="button">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
-        Lớp
-      </button>
-      <div>
-        <h1 id="gradeTitle">Lớp</h1>
-        <div class="sub" id="gradeSub"></div>
+    <div class="controls">
+      <div class="topbar">
+        <button class="back-btn" id="backBtn" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+          Lớp
+        </button>
+        <div>
+          <h1 id="gradeTitle">Lớp</h1>
+          <div class="sub" id="gradeSub"></div>
+        </div>
       </div>
-    </div>
 
-    <div class="tabs" role="tablist">
-      <button class="tab" id="tabStudent" role="tab" aria-selected="true" type="button">Sách học sinh</button>
-      <button class="tab" id="tabTeacher" role="tab" aria-selected="false" type="button">Sách giáo viên</button>
-    </div>
+      <div class="tabs" role="tablist">
+        <button class="tab" id="tabStudent" role="tab" aria-selected="true" type="button">Sách học sinh</button>
+        <button class="tab" id="tabTeacher" role="tab" aria-selected="false" type="button">Sách giáo viên</button>
+      </div>
 
-    <div class="search-row">
-      <input type="search" id="searchBox" placeholder="Tìm môn học, ví dụ: Toán, Tiếng Anh...">
+      <div class="search-row">
+        <input type="search" id="searchBox" placeholder="Tìm môn học, ví dụ: Toán, Tiếng Anh...">
+      </div>
     </div>
 
     <div class="book-grid" id="bookGrid"></div>
     <div class="empty-note" id="emptyNote" hidden>Không tìm thấy sách phù hợp.</div>
+
+    <button class="bottom-back" id="bottomBackBtn" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+      Về danh sách lớp
+    </button>
 
     <div class="note">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
@@ -240,6 +265,7 @@
   var tabTeacher = document.getElementById("tabTeacher");
   var emptyNote = document.getElementById("emptyNote");
   var backBtn = document.getElementById("backBtn");
+  var bottomBackBtn = document.getElementById("bottomBackBtn");
 
   var state = { grade: null, tab: "student", query: "" };
 
@@ -284,6 +310,7 @@
   tabStudent.addEventListener("click", function () { setTab("student"); renderBooks(); });
   tabTeacher.addEventListener("click", function () { setTab("teacher"); renderBooks(); });
   backBtn.addEventListener("click", openHome);
+  bottomBackBtn.addEventListener("click", openHome);
   searchBox.addEventListener("input", function () {
     state.query = searchBox.value.trim().toLowerCase();
     renderBooks();
