@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thư Mục Tài Liệu Dùng Chung</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    color-scheme: light dark;
+    --paper: #EEF1F4;
+    --paper-alt: #E2E7EC;
+    --card: #FFFFFF;
+    --ink: #1C2B3A;
+    --ink-soft: #52657A;
+    --accent: #C97A20;
+    --accent-strong: #A8621A;
+    --accent-on: #FFFFFF;
+    --line: #D3DBE1;
+    --good: #2E7D53;
+    --shadow: 0 1px 2px rgba(28,43,58,0.06), 0 8px 24px rgba(28,43,58,0.08);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #121821;
+      --paper-alt: #1B2430;
+      --card: #182130;
+      --ink: #ECF1F5;
+      --ink-soft: #9FAEBD;
+      --accent: #E4A34A;
+      --accent-strong: #F0B968;
+      --accent-on: #1C2B3A;
+      --line: #2B3742;
+      --good: #5FC088;
+      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 10px 30px rgba(0,0,0,0.35);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --paper: #121821;
+    --paper-alt: #1B2430;
+    --card: #182130;
+    --ink: #ECF1F5;
+    --ink-soft: #9FAEBD;
+    --accent: #E4A34A;
+    --accent-strong: #F0B968;
+    --accent-on: #1C2B3A;
+    --line: #2B3742;
+    --good: #5FC088;
+    --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 10px 30px rgba(0,0,0,0.35);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Be Vietnam Pro", "Segoe UI", system-ui, sans-serif;
+    display: flex;
+    justify-content: center;
+    padding: 40px 16px 64px;
+    line-height: 1.55;
+  }
+
+  .page {
+    width: 100%;
+    max-width: 560px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .badge {
+    align-self: center;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--paper-alt);
+    border: 1px solid var(--line);
+    color: var(--ink-soft);
+    font-size: 13px;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 999px;
+  }
+
+  .badge svg { width: 14px; height: 14px; flex: none; }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    padding: 32px 28px;
+    text-align: center;
+  }
+
+  .folder-icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 18px;
+    display: block;
+  }
+
+  h1 {
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    margin: 0 0 8px;
+    text-wrap: balance;
+  }
+
+  .desc {
+    color: var(--ink-soft);
+    font-size: 15.5px;
+    margin: 0 0 26px;
+    max-width: 38ch;
+    margin-inline: auto;
+  }
+
+  .desc strong { color: var(--ink); font-weight: 600; }
+
+  .cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: var(--accent);
+    color: var(--accent-on);
+    font-family: inherit;
+    font-size: 17px;
+    font-weight: 700;
+    text-decoration: none;
+    border: none;
+    border-radius: 14px;
+    padding: 16px 20px;
+    cursor: pointer;
+    transition: background 0.15s ease, transform 0.1s ease;
+  }
+
+  .cta:hover { background: var(--accent-strong); }
+  .cta:active { transform: scale(0.98); }
+  .cta:focus-visible { outline: 3px solid var(--accent-strong); outline-offset: 3px; }
+
+  .cta svg { width: 20px; height: 20px; flex: none; }
+
+  .copy-row {
+    margin-top: 14px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .copy-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: none;
+    border: none;
+    color: var(--ink-soft);
+    font-family: inherit;
+    font-size: 13.5px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 6px 8px;
+    border-radius: 8px;
+  }
+
+  .copy-btn:hover { color: var(--ink); background: var(--paper-alt); }
+  .copy-btn svg { width: 14px; height: 14px; }
+  .copy-btn.copied { color: var(--good); }
+
+  .embed {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+
+  .embed-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--line);
+    font-size: 12.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink-soft);
+  }
+
+  .embed-label a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-weight: 600;
+    text-transform: none;
+    letter-spacing: normal;
+    font-size: 13px;
+  }
+
+  .embed-label a:hover { color: var(--ink); }
+  .embed-label a svg { width: 13px; height: 13px; }
+
+  .embed iframe {
+    width: 100%;
+    height: 62vh;
+    min-height: 420px;
+    max-height: 620px;
+    border: none;
+    display: block;
+    background: var(--paper-alt);
+  }
+
+  .steps {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    padding: 24px 24px 20px;
+  }
+
+  .steps h2 {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink-soft);
+    margin: 0 0 16px;
+  }
+
+  .step {
+    display: flex;
+    gap: 14px;
+    padding: 12px 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .step:first-of-type { border-top: none; padding-top: 0; }
+
+  .step-num {
+    flex: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--paper-alt);
+    color: var(--ink);
+    font-size: 13.5px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .step-text { font-size: 15px; padding-top: 3px; }
+  .step-text b { font-weight: 600; }
+
+  .note {
+    display: flex;
+    gap: 10px;
+    background: var(--paper-alt);
+    border-radius: 16px;
+    padding: 16px 18px;
+    font-size: 14px;
+    color: var(--ink-soft);
+  }
+
+  .note svg { width: 18px; height: 18px; flex: none; margin-top: 1px; color: var(--accent-strong); }
+  .note b { color: var(--ink); font-weight: 600; }
+
+  footer {
+    text-align: center;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    padding-top: 4px;
+  }
+
+  @media (max-width: 380px) {
+    .card { padding: 26px 20px; }
+    h1 { font-size: 23px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <span class="badge">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg>
+    Google Drive
+  </span>
+
+  <div class="card">
+    <svg class="folder-icon" viewBox="0 0 64 64" fill="none">
+      <path d="M8 20c0-2.21 1.79-4 4-4h11l5 6h20c2.21 0 4 1.79 4 4v22c0 2.21-1.79 4-4 4H12c-2.21 0-4-1.79-4-4V20z" fill="var(--accent)"/>
+      <path d="M8 20c0-2.21 1.79-4 4-4h11l4 5H8v-1z" fill="var(--accent-strong)"/>
+    </svg>
+    <h1>Thư mục tài liệu dùng chung</h1>
+    <p class="desc">Bên trong có các file <strong>PDF</strong> và một số <strong>hình ảnh</strong>. Xem trực tiếp ngay bên dưới — <strong>không cần tài khoản Google</strong>.</p>
+
+    <a class="cta" href="https://drive.google.com/drive/folders/1yhSjb4sMRjAx14GLspPT1jRUZLDokXSM" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2z"/><path d="M12 11v6"/><path d="m9 14 3 3 3-3"/></svg>
+      Mở toàn màn hình
+    </a>
+
+    <div class="copy-row">
+      <button class="copy-btn" id="copyBtn" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        <span id="copyLabel">Sao chép liên kết</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="embed">
+    <div class="embed-label">
+      <span>Danh sách tài liệu</span>
+      <a href="https://drive.google.com/drive/folders/1yhSjb4sMRjAx14GLspPT1jRUZLDokXSM" target="_blank" rel="noopener noreferrer">
+        Mở tab mới
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg>
+      </a>
+    </div>
+    <iframe src="https://drive.google.com/embeddedfolderview?id=1yhSjb4sMRjAx14GLspPT1jRUZLDokXSM#grid" title="Danh sách tài liệu trong thư mục Google Drive" loading="lazy"></iframe>
+  </div>
+
+  <div class="steps">
+    <h2>Cách xem tài liệu</h2>
+    <div class="step">
+      <span class="step-num">1</span>
+      <span class="step-text">Cuộn xem <b>danh sách tài liệu</b> ngay trong khung ở trên — không cần rời khỏi trang này.</span>
+    </div>
+    <div class="step">
+      <span class="step-num">2</span>
+      <span class="step-text">Chạm vào <b>tên file</b> muốn xem, file sẽ tự mở ra để xem trước.</span>
+    </div>
+    <div class="step">
+      <span class="step-num">3</span>
+      <span class="step-text">Muốn lưu về máy, chạm <b>biểu tượng tải xuống</b> (mũi tên ⬇) ở góc trên khi đang xem file.</span>
+    </div>
+  </div>
+
+  <div class="note">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+    <span>Không cần cài ứng dụng hay đăng nhập gì cả. Nếu khung danh sách không hiện ra, bấm nút <b>"Mở toàn màn hình"</b> ở trên để xem trực tiếp trên Google Drive.</span>
+  </div>
+
+  <footer>Trang này chỉ hiển thị tài liệu, không lưu trữ hay chỉnh sửa được gì cả.</footer>
+</div>
+
+<script>
+  var link = "https://drive.google.com/drive/folders/1yhSjb4sMRjAx14GLspPT1jRUZLDokXSM";
+  var btn = document.getElementById("copyBtn");
+  var label = document.getElementById("copyLabel");
+
+  btn.addEventListener("click", function () {
+    function done() {
+      btn.classList.add("copied");
+      label.textContent = "Đã sao chép!";
+      setTimeout(function () {
+        btn.classList.remove("copied");
+        label.textContent = "Sao chép liên kết";
+      }, 1800);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(link).then(done).catch(fallbackCopy);
+    } else {
+      fallbackCopy();
+    }
+    function fallbackCopy() {
+      var ta = document.createElement("textarea");
+      ta.value = link;
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.focus();
+      ta.select();
+      try { document.execCommand("copy"); } catch (e) {}
+      document.body.removeChild(ta);
+      done();
+    }
+  });
+</script>
+</body>
+</html>
